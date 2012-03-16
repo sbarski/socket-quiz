@@ -2,7 +2,7 @@
 
 var client = (function() {
 
-	var socket = io.connect('http://localhost');
+	var socket = io.connect('http://socket-quiz.apphb.com');
 	var hasVoted = window.localStorage.getItem("hasVoted");
 	if (hasVoted) {
 		hasVoted = parseInt(hasVoted,10);

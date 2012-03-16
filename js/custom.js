@@ -3,7 +3,7 @@
 var taitems = (function() {
 
 	var pieChart;
-	var socket = io.connect('http://localhost');
+	var socket = io.connect('http://socket-quiz.apphb.com');
 
 	var updateGraph = function(pos) {
 		//chartData[pos][1] = chartData[pos][1] + 1;
