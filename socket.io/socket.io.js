@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var client = require('socket.io-client/socket.io-client');
+var client = require('socket.io-client');
 
 /**
  * Version.
