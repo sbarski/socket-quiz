@@ -3,6 +3,7 @@
 var taitems = (function() {
 
 	var pieChart;
+	var socket = io.connect('http://localhost');
 
 	var updateGraph = function(pos) {
 		//chartData[pos][1] = chartData[pos][1] + 1;
@@ -12,10 +13,9 @@ var taitems = (function() {
 		pieChart.series[0].data[pos].update(currentVal+1);
 	};
 
-	var getData = function() {
-		console.log(pieChart.series[0]);
-		console.log(pieChart.series[0].data[0]);
-	};
+	var getVoteStatus = function() {
+		return isVoting;
+	}
 
 	$(function() {
 
@@ -41,11 +41,18 @@ var taitems = (function() {
 			}]
 		});
 
+		$("#enableVoting").on("click", function(e) {
+			socket.emit("enableButtons");
+		});
+
+		socket.on("vote", function (data) {
+			console.log(data);
+			updateGraph(data.value);
+		});
 	});
 
 	return {
-		updateGraph: updateGraph,
-		getData: getData
+		updateGraph: updateGraph
 	}
 
 })();
